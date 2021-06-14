@@ -1,11 +1,15 @@
-home, join, login, search, 
 
-edit user, delete, watch, edit video, delete video
+/ -> Home
+/join -> Join
+/login -> Login
+/search -> Search
 
-/users/edit
-/users/delete
-/videos/watch
-/videos/edit
-/videos/delete
-/videos/comments
-/videos/comments/delete
+/users/:id -> See User
+/users/logout -> Log Out
+/users/edit -> Edit MY Profile
+/users/delete -> Delete MY Profile
+
+/videos/:id -> See Video
+/videos/:id/edit -> Edit Video
+/videos/:id/delete -> Delete Video
+/videos/upload -> Upload Video
