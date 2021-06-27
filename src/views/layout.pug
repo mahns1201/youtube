@@ -1,18 +1,11 @@
-doctype html 
 html(lang="ko")
     head
         title #{pageTitle} | Wetube
         link(rel="stylesheet" href="https://unpkg.com/mvp.css")
     body
         header
-            nav 
-                ul  
-                    if fakeUser.loggedIn
-                        li
-                            a(href="/login") Login
-                    else
-                        li
-                            a(href="/logout") Logout
+            h1=pageTitle
         main
             block content
+            
     include partials/footer.pug
