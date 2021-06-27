@@ -14,7 +14,7 @@ const logger = morgan("dev");
 app.set("view engine", "pug");
 app.set("views", process.cwd() + "/src/views");
 app.use(logger);
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true })); // html에 있는 javascript를 이해할 수 있도록 함.
 app.use("/", globalRouter);
 app.use("/users", userRouter);
 app.use("/videos", videoRouter);
