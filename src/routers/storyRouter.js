@@ -8,8 +8,8 @@ import {
 
 const storyRouter = express.Router();
 
-storyRouter.get("/:id", seeStory);
-storyRouter.get("/:id/edit", editStory);
-storyRouter.get("/:id/delete", deleteStory);
+storyRouter.get("/:id(\\d+)", seeStory);
+storyRouter.get("/:id(\\d+)/edit", editStory);
+storyRouter.get("/:id(\\d+)/delete", deleteStory);
 
 export default storyRouter;
