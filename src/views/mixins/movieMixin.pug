@@ -1,0 +1,4 @@
+mixin movieMixin(video = {})
+  ul
+    a(href=`/movies/${video.id}`)
+      li=video.title

@@ -1,0 +1,11 @@
+extends layouts/layout
+
+block content
+    a(href="/movies") home
+
+    h1 Add a Movie Here !
+    form(method="POST")
+        input(name="title", type="text", placeholder="Title")
+        input(name="synopsis", type="text", placeholder="Synopsis")
+        input(name="genres", type="text", placeholder="Genres")
+        input(value="save" type="submit")
