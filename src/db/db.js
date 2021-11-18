@@ -48,3 +48,7 @@ export const getMovieByMinimumRating = (rating) => {
     }
     return movies.filter((m) => m.rating >= rating);
 };
+
+export const addMovie = (parm1, parm2, parm3) => {
+    console.log(parm1, parm2, parm3)
+}
