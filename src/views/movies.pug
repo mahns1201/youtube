@@ -1,0 +1,16 @@
+extends layouts/layout
+
+block content
+    form(method="POST")
+        input(name="year", type="text", placeholder="Year")
+        input(value="save", type="submit")
+
+    form(method="POST")
+        input(name="rating", type="text", placeholder="Rating")
+        input(value="save", type="submit")
+
+    ul
+        each movie in movies
+            li
+                a(href=`/movies/${movie.id}`) #{movie.title}
+
