@@ -42,3 +42,15 @@ export const addMovieController = (req, res) => {
     return res.render("movies", { movies: movies });
 };
 
+// solution2
+// export const add = (req, res) => {
+//     if (req.method === "GET") {
+//       return res.render("add", { pageTitle: "Add Movie" });
+//     } else if (req.method === "POST") {
+//       const {
+//         body: { title, genres, synopsis }
+//       } = req;
+//       addMovie({ title, synopsis, genres: genres.split(",") });
+//       return res.redirect("/");
+//     }
+//   };
