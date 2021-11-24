@@ -4,7 +4,7 @@ Because it's a default export we can nickname it whatever we want.
 So import Movie from "./models"; will work!
 You can do Movie.find() or whatever you need like normal!
 */
-import Movie from "./models/Movie";
+import Movie from "../models/Movie";
 
 export const home = async (req, res) => {
     const movies = await Movie.find({});

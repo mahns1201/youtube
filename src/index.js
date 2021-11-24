@@ -3,8 +3,8 @@ import "./models/Movie";
 import express from "express";
 import path from "path";
 import bodyParser from "body-parser";
-import movieRouter from "./movieRouter";
-import { localsMiddleware } from "./middlewares";
+import movieRouter from "./routers/movieRouter";
+import { localsMiddleware } from "./middlewares/setSiteTitle";
 
 const app = express();
 app.set("view engine", "pug");
