@@ -6,18 +6,22 @@ You can do Movie.find() or whatever you need like normal!
 */
 import Movie from "./models/Movie";
 
-// Add your magic here!
 export const home = async (req, res) => {
     const movies = await Movie.find({});
     res.render("movies", { pageTitle: "Home", movies });
 };
+
 export const create = async (req, res) => {
     if (req.method === "GET") {
         res.render("create", { pageTitle: "Create" });
     } else if (req.method === "POST") {
-        const {
-            body: { title, summary, year, rating, genres }
-        } = req;
+        // const {
+        //     body: { title, summary, year, rating, genres }
+        // } = req;
+
+        // 위와 동일
+        const { title, summary, year, rating, genres } = req.body;
+
         const newMovie = await Movie.create({
             title,
             summary,
@@ -28,6 +32,7 @@ export const create = async (req, res) => {
         res.redirect(`/${newMovie.id}`);
     }
 };
+
 export const detail = async (req, res) => {
     const {
         params: { id }

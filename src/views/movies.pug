@@ -3,5 +3,7 @@ include mixins/movies
 
 block content
   h1=pageTitle
-  each movie in movies
-    +movie(movie)
+  ul
+    each movie in movies
+        li
+            +movie(movie)
