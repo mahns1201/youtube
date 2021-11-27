@@ -1,0 +1,10 @@
+extends templates/layout
+
+block content
+    h1 #{errorMessage}
+    form(method="POST")
+        input(placeholder="Name", name="name", type="text", required)
+        input(placeholder="Username", name="userName", type="text", required)
+        input(placeholder="Password", name="password", type="password", required)
+        input(placeholder="Confirm Password", name="password2", type="password", required)
+        input(type="submit", value="Join")

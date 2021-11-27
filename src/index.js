@@ -1,9 +1,11 @@
 import "./db/db";
 import "./models/Movie";
+import "./models/User";
 import express from "express";
 import path from "path";
 import bodyParser from "body-parser";
 import movieRouter from "./routers/movieRouter";
+import userRouter from "./routers/userRouter";
 import { localsMiddleware } from "./middlewares/setSiteTitle";
 
 const app = express();
@@ -12,6 +14,7 @@ app.set("views", path.join(__dirname, "views"));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(localsMiddleware);
 app.use("/", movieRouter);
+app.use("/user", userRouter);
 
 const PORT = 4000;
-app.listen(PORT, () => console.log(`✅  Server Ready!`));
+app.listen(PORT, () => console.log(`http://localhost:${PORT}`));
