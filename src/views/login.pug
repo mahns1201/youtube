@@ -1,7 +1,8 @@
 extends templates/layout
 
 block content
+    h1 #{errorMessage}
     form(method="post")
-        input(name="userName", type="text", placeholder="User Name")
-        input(name="password", type="password", placeholder="User Name")
+        input(name="username", type="text", placeholder="User Name")
+        input(name="password", type="password", placeholder="Password")
         input(type="submit", value="Submit")
