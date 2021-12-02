@@ -1,4 +1,3 @@
-const { clear } = require("console");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const path = require("path");
 
