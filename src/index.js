@@ -30,6 +30,7 @@ app.use((req, res, next) => {
     });
 });
 
+app.use("/assets", express.static("assets"));
 app.use("/", movieRouter);
 app.use("/user", userRouter);
 
