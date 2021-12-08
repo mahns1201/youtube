@@ -18,6 +18,7 @@ App.set("view engine", "pug");
 App.set("views", process.cwd() + "/src/views");
 
 App.use(logger);
+App.use(express.urlencoded({ extended: true }));
 App.use("/", rootRouter);
 App.use("/users", userRouter);
 App.use("/videos", videoRouter);
