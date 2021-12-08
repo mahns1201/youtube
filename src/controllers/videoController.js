@@ -1,7 +1,7 @@
 const video = (req, res) => {
     const { id } = req.params;
 
-    return res.send(`<h1>video #${id}</h1>`)
+    return res.send(`<h1>video #${id}</h1>`, { pageTitle: "Home" })
 }
 
 export { video }

@@ -1,3 +1,3 @@
-const home = (req, res) => { return res.send("<h1>home</h1>") }
+const home = (req, res) => res.render("home", { pageTitle: "Home" });
 
 export { home }
