@@ -4,7 +4,7 @@
   "description": "## Tech tack 1. node.js 2. mongodb 3. pug",
   "main": "server.js",
   "scripts": {
-    "dev": "nodemon --exec babel-node src/server.js"
+    "dev": "nodemon --exec babel-node src/init.js"
   },
   "repository": {
     "type": "git",

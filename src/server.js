@@ -1,6 +1,5 @@
 import express from "express";
 import morgan from "morgan";
-import "./db";
 
 // router
 import rootRouter from "./routers/rootRouter";
@@ -9,7 +8,6 @@ import videoRouter from "./routers/videoRouter";
 
 // common
 const App = express();
-const PORT = 4000;
 
 // middleware
 const logger = morgan("dev");
@@ -24,5 +22,4 @@ App.use("/", rootRouter);
 App.use("/users", userRouter);
 App.use("/videos", videoRouter);
 
-const handleListen = () => console.log(`✅ Server listening on http://localhost:${PORT}`);
-App.listen(PORT, handleListen);
+export default App;
