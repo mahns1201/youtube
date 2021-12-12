@@ -4,13 +4,14 @@ include mixins/video
 block content
     h1 Welcome here you will see the trending videos!
 
-    if videos
-        each video in videos
-            +video(video)
-            div
-                a(href=`/videos/${video.id}`) Watch
-            div
-                a(href=`/videos/${video.id}/edit`) Edit
+    each video in videos
+        +video(video)
+        div
+            a(href=`/videos/${video.id}`) Watch
+        div
+            a(href=`/videos/${video.id}/edit`) Edit
+
+        hr
 
     else
         h1 Sorry noting found

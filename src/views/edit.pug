@@ -1,9 +1,13 @@
 extends base.pug
 
 block content
-    a(href="/") Home
 
     form(method="POST")
-        input(name="title", type="text", required )
-        input(type="submit", value="submit")
+        input(name="title", type="text", placeholder="Title", minlength=5, value=video.title required)
+        input(name="description", type="text", placeholder="Description", maxlength=100, value=video.description, required)
+        input(name="hashtags", type="text", placeholder="Hashtags", value=video.hashtags.join(), required)
+        input(type="submit", value="Edit")
 
+    br
+    a(href=`/videos/${video.id}/delete`) Delete Video &rarr;
+    hr

@@ -2,7 +2,9 @@ mixin video(video)
     div
         h1=video.title
         ul
-            li #{video.rating}
-            li #{video.createdAt}
-            li #{video.comments}
-            li #{video.views}
+            li description: #{video.description}
+            each hashtag in video.hashtags
+                li #{hashtag}
+            li rating: #{video.meta.rating}/5
+            li views: #{video.meta.views}
+            li createdAt: #{video.createdAt}
