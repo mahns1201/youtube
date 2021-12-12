@@ -1,3 +1,5 @@
+// Server's Configuration Setting
+
 import App from "./server";
 import "./db";
 import "./models/Video";
