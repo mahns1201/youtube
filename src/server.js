@@ -1,6 +1,7 @@
 import express from "express";
 import morgan from "morgan";
 import session from "express-session";
+import MongoStore from 'connect-mongo';
 
 // router
 import rootRouter from "./routers/rootRouter";
@@ -26,9 +27,13 @@ App.use(express.urlencoded({ extended: true }));
 
 App.use(
     session({
-        secret: "Hello",
+        secret: process.env.COOKIE_SECRETE,
         resave: true,
-        saveUninitialized: true,
+        saveUninitialized: false, // 세션이 수정될 때만 쿠키를 넘긴다.
+        // cookie: {
+        //     maxAge: 20000, (ms)
+        // },
+        store: MongoStore.create({ mongoUrl: process.env.DB_URL })
     })
 );
 

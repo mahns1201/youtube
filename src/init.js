@@ -1,5 +1,5 @@
 // Server's Configuration Setting
-
+import "dotenv/config";
 import App from "./server";
 import "./db";
 import "./models/Video";

@@ -9,7 +9,7 @@ html(lang="en")
 
         if loggedIn
             a(href="/profile") #{locals.user.name}'s Profile /
-            a(href="/logout") Log Out
+            a(href="/users/logout") Log Out
         else
             a(href="/join") Join /
             a(href="/login") Login
