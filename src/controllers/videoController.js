@@ -11,11 +11,11 @@ const watch = async (req, res) => {
     return res.render("watch", { pageTitle: "watch", video });
 }
 
-const uploadGet = (req, res) => {
+const getUpload = (req, res) => {
     return res.render("upload", { pageTitle: "upload" });
 }
 
-const uploadPost = async (req, res) => {
+const postUpload = async (req, res) => {
     const { title, description, hashtags } = req.body;
 
     try {
@@ -32,7 +32,7 @@ const uploadPost = async (req, res) => {
     }
 }
 
-const editGet = async (req, res) => {
+const getEdit = async (req, res) => {
     const { id } = req.params;
     const video = await Video.findById(id);
 
@@ -43,7 +43,7 @@ const editGet = async (req, res) => {
     return res.render("edit", { pageTitle: "Editing", video });
 }
 
-const editPost = async (req, res) => {
+const postEdit = async (req, res) => {
     const { id } = req.params;
     const { title, description, hashtags } = req.body;
 
@@ -84,4 +84,4 @@ const search = async (req, res) => {
     return res.render("search", { pageTitle: "Search", videos });
 }
 
-export { watch, editGet, editPost, uploadGet, uploadPost, deleteVideo, search };
+export { watch, getEdit, postEdit, getUpload, postUpload, deleteVideo, search };

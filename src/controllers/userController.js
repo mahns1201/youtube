@@ -4,9 +4,9 @@ import fetch from "node-fetch";
 
 const user = (req, res) => { return res.send("<h1>user</h1>") }
 
-const joinGet = (req, res) => res.render("join", { pageTitle: "Join" });
+const getJoin = (req, res) => res.render("join", { pageTitle: "Join" });
 
-const joinPost = async (req, res) => {
+const postJoin = async (req, res) => {
     const pageTitle = "Join"
     const { name, username, email, password, password2, location } = req.body;
 
@@ -37,9 +37,9 @@ const joinPost = async (req, res) => {
     }
 };
 
-const loginGet = (req, res) => res.render("login", { pageTitle: "Login" });
+const getLogin = (req, res) => res.render("login", { pageTitle: "Login" });
 
-const loginPost = async (req, res) => {
+const postLogin = async (req, res) => {
     const pageTitle = "Login";
     const { username, password } = req.body;
 
@@ -142,10 +142,18 @@ const finishGithubLogin = async (req, res) => {
     }
 };
 
+const getEdit = (req, res) => {
+    return res.render("edit-profile", { pageTitle: "Edit Profile" });
+}
+
+const postEdit = (req, res) => {
+    return res.render("edit-profile");
+}
+
 const logout = (req, res) => {
     req.session.destroy();
 
     return res.redirect("/");
 }
 
-export { user, joinGet, joinPost, loginGet, loginPost, startGithubLogin, finishGithubLogin, logout }
+export { user, getJoin, postJoin, getLogin, postLogin, startGithubLogin, finishGithubLogin, getEdit, postEdit, logout }
