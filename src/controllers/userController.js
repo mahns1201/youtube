@@ -146,8 +146,71 @@ const getEdit = (req, res) => {
     return res.render("edit-profile", { pageTitle: "Edit Profile" });
 }
 
-const postEdit = (req, res) => {
-    return res.render("edit-profile");
+const postEdit = async (req, res) => {
+    // const { id } = req.session.user;
+    // const { name, email, username, location } = req.body;
+    // const sessionUsername = req.session.user.username
+    // const sessionEmail = req.session.user.email
+    // ES6
+    const {
+        session: {
+            user: { _id, email: sessionEmail, username: sessionUsername },
+        },
+        body: { name, email, username, location },
+    } = req;
+
+    // https://github.com/kmnkit/wetube/blob/main/src/controllers/userController.js
+
+    // let searchParam = [];
+    // if (sessionEmail !== email) {
+    //     searchParam.push({ email });
+    // }
+    // if (sessionUsername !== username) {
+    //     searchParam.push({ username });
+    // }
+    // if (searchParam.length > 0) {
+    //     const foundUser = await User.findOne({ $or: searchParam });
+    //     // 같은 이메일/유저명을 가지고 있는데 다른 _id 이면 중복된 것이다 !
+    //     if (foundUser && foundUser._id.toString() !== _id) {
+    //         return res.status(HTTP_BAD_REQUEST).render("edit-profile", {
+    //             pageTitle: "Edit Profile",
+    //             errorMessage: "This username/email is already taken.",
+    //         });
+    //     }
+    // }
+
+    if (!(sessionUsername === username) || !(sessionEmail === email)) {
+        const exists = await User.exists({ $or: [{ username }, { email }] });
+
+        if (exists) {
+            return res.status(400).render("edit-profile", { pageTitle: "Edit Profile", errorMessage: "This username/email is already taken." });
+        }
+    }
+
+    // 1. username, email을 세션과 비교한다.
+    // 3. 만약 둘 중 하나라도 다르다. -> 변경사항 있음 => 중복검사 실시! => 통과시 업데이트!
+    // 2. 만약 같다. -> 변경사항 없음. => 중복검사 하지 않고 바로 업데이트
+
+    const updatedUser = await User.findByIdAndUpdate(_id, {
+        name,
+        email,
+        username,
+        location,
+    }, { new: true })
+
+    req.session.user = updatedUser;
+
+
+    // session 직접 업데이트 하는 방식
+    // req.session.user = {
+    //     ...req.session.user,
+    //     name,
+    //     email,
+    //     username,
+    //     location,
+    // };
+
+    return res.redirect("/users/edit");
 }
 
 const logout = (req, res) => {

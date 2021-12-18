@@ -31,7 +31,7 @@ App.use(
         resave: true,
         saveUninitialized: false, // 세션이 수정될 때만 쿠키를 넘긴다.
         // cookie: {
-        //     maxAge: 20000, (ms)
+        //     maxAge: 20000, // (ms)
         // },
         store: MongoStore.create({ mongoUrl: process.env.DB_URL })
     })
