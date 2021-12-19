@@ -200,7 +200,6 @@ const postEdit = async (req, res) => {
 
     req.session.user = updatedUser;
 
-
     // session 직접 업데이트 하는 방식
     // req.session.user = {
     //     ...req.session.user,
@@ -213,10 +212,42 @@ const postEdit = async (req, res) => {
     return res.redirect("/users/edit");
 }
 
+const getChangePassword = (req, res) => {
+    return res.render("edit-password", { pageTitle: "Edit Password" });
+}
+
+const postChangePassword = async (req, res) => {
+    const {
+        session: {
+            user: { _id }
+        }
+
+    } = req;
+
+    const user = await User.findById(_id);
+
+    const { oldPassword, newPassword, newPassword2 } = req.body;
+
+    const ok = await bcrypt.compare(oldPassword, user.password)
+
+    if (!ok) {
+        return res.status(400).render("edit-password", { pageTitle: "Change Password", errorMessage: "The current password is incorrect" })
+    }
+
+    if (newPassword !== newPassword2) {
+        return res.status(400).render("edit-password", { pageTitle: "Change Password", errorMessage: "The password does not match the confirmation" })
+    }
+
+    user.password = newPassword;
+    await user.save();
+
+    return res.redirect("/users/logout");
+}
+
 const logout = (req, res) => {
     req.session.destroy();
 
     return res.redirect("/");
 }
 
-export { user, getJoin, postJoin, getLogin, postLogin, startGithubLogin, finishGithubLogin, getEdit, postEdit, logout }
+export { user, getJoin, postJoin, getLogin, postLogin, startGithubLogin, finishGithubLogin, getEdit, postEdit, getChangePassword, postChangePassword, logout }
