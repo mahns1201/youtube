@@ -38,7 +38,7 @@ App.use(
 );
 
 App.use(localMiddleware);
-
+App.use("/uploads", express.static("uploads")); // 노출시키고 싶은 폴더를 정의한다.
 App.use("/", rootRouter);
 App.use("/users", userRouter);
 App.use("/videos", videoRouter);

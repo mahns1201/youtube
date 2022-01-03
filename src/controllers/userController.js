@@ -122,6 +122,7 @@ const finishGithubLogin = async (req, res) => {
 
         let user = await User.findOne({ email: emailObject.email });
 
+        // 폴더에 file을 저장하고 DB에는 url만 저장한다.
         if (!user) {
             user = await User.create({
                 avatarUrl: userData.avatarUrl,
@@ -154,10 +155,13 @@ const postEdit = async (req, res) => {
     // ES6
     const {
         session: {
-            user: { _id, email: sessionEmail, username: sessionUsername },
+            user: { _id, email: sessionEmail, username: sessionUsername, avatarUrl },
         },
         body: { name, email, username, location },
+        file,
     } = req;
+
+    console.log(file);
 
     // https://github.com/kmnkit/wetube/blob/main/src/controllers/userController.js
 
@@ -192,6 +196,7 @@ const postEdit = async (req, res) => {
     // 2. 만약 같다. -> 변경사항 없음. => 중복검사 하지 않고 바로 업데이트
 
     const updatedUser = await User.findByIdAndUpdate(_id, {
+        avatarUrl: file ? file.path : avatarUrl,
         name,
         email,
         username,
