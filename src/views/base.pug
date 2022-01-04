@@ -8,8 +8,9 @@ html(lang="en")
 
         if loggedIn
             a(href="/videos/upload") Upload /
+            a(href=`/users/${loggedInUser._id}`) See Profile /
             a(href="/users/edit") Edit Profile /
-            a(href="/profile") #{locals.loggedInUser.name}'s Profile /
+            a(href="/profile") #{loggedInUser.name}'s Profile /
             a(href="/users/logout") Log Out
         else
             a(href="/join") Join /
