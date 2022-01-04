@@ -1,4 +1,16 @@
 extends ../base
+include ../mixins/video
 
 block content
   h1 hello
+
+  each video in videos
+    +video(video)
+    div
+        a(href=`/videos/${video.id}`) Watch
+    div
+        a(href=`/videos/${video.id}/edit`) Edit
+    hr
+
+  else
+      h1 Sorry noting found

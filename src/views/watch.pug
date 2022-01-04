@@ -5,4 +5,8 @@ block content
     h1 Watching now: #{video.title}
     h3 #{video.meta.views} #{video.meta.views === 1 ? "view" : "views"}
 
-    a(href=`${video.id}/edit`) Edit Video &rarr;
+    small Uploaded by
+        a(href=`/users/${video.owner._id}`)=video.owner.name
+    br
+    if String(loggedInUser._id) === String(video.owner._id)
+        a(href=`${video.id}/edit`) Edit Video &rarr;
