@@ -1,12 +1,22 @@
 extends base.pug
 
 block content
-    video(src=`/${video.fileUrl}`, controls)
-    h1 Watching now: #{video.title}
-    h3 #{video.meta.views} #{video.meta.views === 1 ? "view" : "views"}
+    video#video(src=`/${video.fileUrl}`, controls)
+    div
+        button#play Play
+        button#mute Mute
+        span#time 00:00/00:00
+        input(type="range",step="0.1", min="0", max="1")#volume
 
-    small Uploaded by
-        a(href=`/users/${video.owner._id}`)=video.owner.name
-    br
-    if String(loggedInUser._id) === String(video.owner._id)
-        a(href=`${video.id}/edit`) Edit Video &rarr;
+
+    //- h1 Watching now: #{video.title}
+    //- h3 #{video.meta.views} #{video.meta.views === 1 ? "view" : "views"}
+
+    //- small Uploaded by
+    //-     a(href=`/users/${video.owner._id}`)=video.owner.name
+    //- br
+    //- if String(loggedInUser._id) === String(video.owner._id)
+    //-     a(href=`${video.id}/edit`) Edit Video &rarr;
+
+block scripts
+    script(src="/assets/js/videoPlayer.js")
