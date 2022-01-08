@@ -1,13 +1,20 @@
 extends base.pug
 
 block content
-    video#video(src=`/${video.fileUrl}`, controls)
-    div
-        button#play Play
-        button#mute Mute
-        span#time 00:00/00:00
-        input(type="range",step="0.1", min="0", max="1")#volume
-
+    div#videoContainer
+        video#video(src=`/${video.fileUrl}`)
+        div#videoControls
+            button#playBtn Play
+            button#muteBtn Mute
+            div
+                span#currentTime 00:00
+                span  /
+                span#totalTime 00:00
+            input#volumeRange(type="range",step="0.1", value=0.5, min="0", max="1")
+            div
+                input#timeline(type="range", step="1", value="0", min="0")
+            div
+                button#fullScreenBtn Enter Full Screen
 
     //- h1 Watching now: #{video.title}
     //- h3 #{video.meta.views} #{video.meta.views === 1 ? "view" : "views"}
