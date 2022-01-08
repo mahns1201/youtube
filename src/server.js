@@ -1,25 +1,25 @@
-import express from "express";
-import morgan from "morgan";
-import session from "express-session";
-import MongoStore from "connect-mongo";
+import express from 'express';
+import morgan from 'morgan';
+import session from 'express-session';
+import MongoStore from 'connect-mongo';
 
 // router
-import rootRouter from "./routers/rootRouter";
-import userRouter from "./routers/userRouter";
-import videoRouter from "./routers/videoRouter";
-import apiRouter from "./routers/apiRouter";
+import rootRouter from './routers/rootRouter';
+import userRouter from './routers/userRouter';
+import videoRouter from './routers/videoRouter';
+import apiRouter from './routers/apiRouter';
 
 // middleware
-import { localMiddleware } from "./middlewares";
+import { localMiddleware } from './middlewares';
 
 // common
 const App = express();
 
 // middleware
-const logger = morgan("dev");
+const logger = morgan('dev');
 
-App.set("view engine", "pug");
-App.set("views", process.cwd() + "/src/views");
+App.set('view engine', 'pug');
+App.set('views', process.cwd() + '/src/views');
 
 App.use(logger);
 App.use(express.urlencoded({ extended: true }));
@@ -33,15 +33,15 @@ App.use(
     //     maxAge: 20000, // (ms)
     // },
     store: MongoStore.create({ mongoUrl: process.env.DB_URL }),
-  })
+  }),
 );
 
 App.use(localMiddleware);
-App.use("/uploads", express.static("uploads")); // 노출시키고 싶은 폴더를 정의한다.
-App.use("/assets", express.static("assets"));
-App.use("/", rootRouter);
-App.use("/users", userRouter);
-App.use("/videos", videoRouter);
-App.use("/api", apiRouter);
+App.use('/uploads', express.static('uploads')); // 노출시키고 싶은 폴더를 정의한다.
+App.use('/assets', express.static('assets'));
+App.use('/', rootRouter);
+App.use('/users', userRouter);
+App.use('/videos', videoRouter);
+App.use('/api', apiRouter);
 
 export default App;
