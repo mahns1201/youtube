@@ -47,7 +47,9 @@ const formatTime = (seconds) =>
   new Date(seconds * 1000).toISOString().substring(11, 19);
 
 const handleTimeUpdate = () => {
-  currentTime.innerText = formatTime(Math.floor(video.currentTime));
+  const currentTime = Math.floor(video.currentTime);
+  currentTime.innerText = formatTime(currentTime);
+  timeline.value = currentTime;
 };
 
 const handleLoadedMetadata = () => {
