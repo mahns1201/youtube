@@ -37,6 +37,11 @@ App.use(
 );
 
 App.use(localMiddleware);
+App.use((req, res, next) => {
+  res.header('Cross-Origin-Embedder-Policy', 'require-corp');
+  res.header('Cross-Origin-Opener-Policy', 'same-origin');
+  next();
+});
 App.use('/uploads', express.static('uploads')); // 노출시키고 싶은 폴더를 정의한다.
 App.use('/assets', express.static('assets'));
 App.use('/', rootRouter);
