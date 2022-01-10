@@ -1,13 +1,14 @@
-import multer from 'multer';
+import multer from "multer";
 
 const localMiddleware = (req, res, next) => {
-  res.locals.loggedIn = Boolean(req.session.loggedIn);
-  res.locals.loggedInUser = req.session.user || {};
+    res.locals.loggedIn = Boolean(req.session.loggedIn);
+    res.locals.loggedInUser = req.session.user || {}
 
-  next();
+    next();
 };
 
 const protectorMiddleware = (req, res, next) => {
+<<<<<<< HEAD
   if (req.session.loggedIn) {
     return next();
   } else {
@@ -24,21 +25,25 @@ const publicOnlyMiddleware = (req, res, next) => {
     return res.redirect('/');
   }
 };
+=======
+    if (req.session.loggedIn) {
+        return next();
+    } else {
+        return res.redirect("/login");
+    }
+}
 
-const avatarUpload = multer({
-  dest: 'uploads/avatars/',
-  limits: { fileSize: 3000000 },
-});
+const publicOnlyMiddleware = (req, res, next) => {
+    if (!req.session.loggedIn) {
+        return next();
+    } else {
+        return res.redirect("/");
+    }
+}
+>>>>>>> parent of b37bdb5 ([feat] prettierrc.js)
 
-const videoUpload = multer({
-  dest: 'uploads/videos/',
-  limits: { fileSize: 20000000 },
-});
+const avatarUpload = multer({ dest: "uploads/avatars/", limits: { fileSize: 3000000 } });
 
-export {
-  localMiddleware,
-  protectorMiddleware,
-  publicOnlyMiddleware,
-  avatarUpload,
-  videoUpload,
-};
+const videoUpload = multer({ dest: "uploads/videos/", limits: { fileSize: 20000000 } });
+
+export { localMiddleware, protectorMiddleware, publicOnlyMiddleware, avatarUpload, videoUpload };

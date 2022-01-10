@@ -1,19 +1,19 @@
-import Video from '../models/Video';
-import User from '../models/User';
+import Video from "../models/Video";
+import User from "../models/User";
 
 const watch = async (req, res) => {
   const { id } = req.params;
-  const video = await Video.findById(id).populate('owner');
+  const video = await Video.findById(id).populate("owner");
 
   if (!video) {
-    return res.status(400).render('404', { pageTitle: 'Video not found' });
+    return res.status(400).render("404", { pageTitle: "Video not found" });
   }
 
-  return res.render('watch', { pageTitle: 'watch', video });
+  return res.render("watch", { pageTitle: "watch", video });
 };
 
 const getUpload = (req, res) => {
-  return res.render('upload', { pageTitle: 'upload' });
+  return res.render("upload", { pageTitle: "upload" });
 };
 
 const postUpload = async (req, res) => {
@@ -38,12 +38,12 @@ const postUpload = async (req, res) => {
     user.videos.push(newVideo._id);
     user.save();
 
-    return res.redirect('/');
+    return res.redirect("/");
   } catch (error) {
     console.log(error);
     return res
       .status(400)
-      .render('upload', { pageTitle: 'upload', errorMessage: error._message });
+      .render("upload", { pageTitle: "upload", errorMessage: error._message });
   }
 };
 
@@ -56,15 +56,19 @@ const getEdit = async (req, res) => {
   } = req.session;
 
   if (!video) {
-    return res.status(400).render('404', { pageTitle: 'Video not found' });
+    return res.status(400).render("404", { pageTitle: "Video not found" });
   }
 
   if (String(video.owner) !== String(_id)) {
+<<<<<<< HEAD
     req.flash('error', 'Not authorized');
     return res.status(403).redirect('/');
+=======
+    return res.status(403).redirect("/");
+>>>>>>> parent of b37bdb5 ([feat] prettierrc.js)
   }
 
-  return res.render('edit', { pageTitle: 'Editing', video });
+  return res.render("edit", { pageTitle: "Editing", video });
 };
 
 const postEdit = async (req, res) => {
@@ -77,12 +81,16 @@ const postEdit = async (req, res) => {
   const video = await Video.exists({ _id: id });
 
   if (!video) {
-    return res.status(400).render('404', { pageTitle: 'Video not found' });
+    return res.status(400).render("404", { pageTitle: "Video not found" });
   }
 
   if (String(video.owner) !== String(_id)) {
+<<<<<<< HEAD
     req.flash('error', 'Not authorized');
     return res.status(403).redirect('/');
+=======
+    return res.status(403).redirect("/");
+>>>>>>> parent of b37bdb5 ([feat] prettierrc.js)
   }
 
   await Video.findByIdAndUpdate(id, {
@@ -104,17 +112,21 @@ const deleteVideo = async (req, res) => {
   const video = await Video.findById(id);
 
   if (!video) {
-    return res.status(404).render('404', { pageTitle: 'Video not found.' });
+    return res.status(404).render("404", { pageTitle: "Video not found." });
   }
 
   if (String(video.owner) !== String(_id)) {
+<<<<<<< HEAD
     req.flash('error', 'Not authorized');
     return res.status(403).redirect('/');
+=======
+    return res.status(403).redirect("/");
+>>>>>>> parent of b37bdb5 ([feat] prettierrc.js)
   }
 
   await Video.findByIdAndDelete(id);
 
-  return res.redirect('/');
+  return res.redirect("/");
 };
 
 const search = async (req, res) => {
@@ -124,12 +136,12 @@ const search = async (req, res) => {
   if (keyword) {
     videos = await Video.find({
       title: {
-        $regex: new RegExp(`${keyword}`, 'i'),
+        $regex: new RegExp(`${keyword}`, "i"),
       },
     });
   }
 
-  return res.render('search', { pageTitle: 'Search', videos });
+  return res.render("search", { pageTitle: "Search", videos });
 };
 
 const registerView = async (req, res) => {
