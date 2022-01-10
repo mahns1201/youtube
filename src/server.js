@@ -2,6 +2,7 @@ import express from 'express';
 import morgan from 'morgan';
 import session from 'express-session';
 import MongoStore from 'connect-mongo';
+import flash from 'express-flash';
 
 // router
 import rootRouter from './routers/rootRouter';
@@ -21,6 +22,7 @@ const logger = morgan('dev');
 App.set('view engine', 'pug');
 App.set('views', process.cwd() + '/src/views');
 
+App.use(flash());
 App.use(logger);
 App.use(express.urlencoded({ extended: true }));
 

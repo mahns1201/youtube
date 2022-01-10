@@ -1,8 +1,17 @@
+include mixins/message
+
 doctype html
 html(lang="en")
     include partials/head.pug
 
     body
+        if messages.error
+            +message("error", messages.error)
+        if messages.info
+            +message("info", messages.info)
+        if messages.success
+            +message("success", messages.success)
+
         a(href="/") Home /
         a(href="/search") Search /
 

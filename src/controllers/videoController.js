@@ -60,6 +60,7 @@ const getEdit = async (req, res) => {
   }
 
   if (String(video.owner) !== String(_id)) {
+    req.flash('error', 'Not authorized');
     return res.status(403).redirect('/');
   }
 
@@ -80,6 +81,7 @@ const postEdit = async (req, res) => {
   }
 
   if (String(video.owner) !== String(_id)) {
+    req.flash('error', 'Not authorized');
     return res.status(403).redirect('/');
   }
 
@@ -89,6 +91,7 @@ const postEdit = async (req, res) => {
     hashtags: Video.formatHashtags(hashtags),
   });
 
+  req.flash('success', 'Changes saved.');
   return res.redirect(`/videos/${id}`);
 };
 
@@ -105,6 +108,7 @@ const deleteVideo = async (req, res) => {
   }
 
   if (String(video.owner) !== String(_id)) {
+    req.flash('error', 'Not authorized');
     return res.status(403).redirect('/');
   }
 
