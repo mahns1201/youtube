@@ -1,9 +1,10 @@
-import Video from '../models/Video';
 import User from '../models/User';
+import Video from '../models/Video';
+import Comment from '../models/Comment';
 
 const watch = async (req, res) => {
   const { id } = req.params;
-  const video = await Video.findById(id).populate('owner');
+  const video = await Video.findById(id).populate('owner').populate('comments');
 
   if (!video) {
     return res.status(400).render('404', { pageTitle: 'Video not found' });
@@ -145,6 +146,32 @@ const registerView = async (req, res) => {
   return res.sendStatus(200);
 };
 
+const createComment = async (req, res) => {
+  const {
+    session: { user },
+    body: { text },
+    params: { id },
+  } = req;
+
+  const video = await Video.findById(id);
+
+  if (!video) {
+    return res.sendStatus(404);
+  }
+
+  const comment = await Comment.create({
+    text,
+    owner: user._id,
+    video: id,
+  });
+
+  video.comments.push(comment._id);
+  video.save();
+
+  // 새로 생긴 댓글의 id를 .json으로 보낸다.
+  return res.status(201).json({ newCommentId: comment._id });
+};
+
 export {
   watch,
   getEdit,
@@ -154,4 +181,5 @@ export {
   deleteVideo,
   search,
   registerView,
+  createComment,
 };

@@ -25,6 +25,7 @@ App.set('views', process.cwd() + '/src/views');
 App.use(flash());
 App.use(logger);
 App.use(express.urlencoded({ extended: true }));
+App.use(express.json());
 
 App.use(
   session({
