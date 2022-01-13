@@ -1,4 +1,5 @@
 // Server's Configuration Setting
+import 'regenerator-runtime';
 import 'dotenv/config';
 import App from './server';
 import './db';
