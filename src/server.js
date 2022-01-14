@@ -14,20 +14,20 @@ import apiRouter from './routers/apiRouter';
 import { localMiddleware } from './middlewares';
 
 // common
-const App = express();
+const app = express();
 
 // middleware
 const logger = morgan('dev');
 
-App.set('view engine', 'pug');
-App.set('views', process.cwd() + '/src/views');
+app.set('view engine', 'pug');
+app.set('views', process.cwd() + '/src/views');
 
-App.use(flash());
-App.use(logger);
-App.use(express.urlencoded({ extended: true }));
-App.use(express.json());
+app.use(flash());
+app.use(logger);
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
-App.use(
+app.use(
   session({
     secret: process.env.COOKIE_SECRETE,
     resave: true,
@@ -39,7 +39,7 @@ App.use(
   }),
 );
 
-App.use(localMiddleware);
+app.use(localMiddleware);
 app.use((req, res, next) => {
   res.header('Cross-Origin-Embedder-Policy', 'credentialless');
   res.header('Cross-Origin-Opener-Policy', 'same-origin');
@@ -50,11 +50,11 @@ app.use((req, res, next) => {
   res.header('Access-Control-Allow-Credentials', true);
   next();
 });
-App.use('/uploads', express.static('uploads')); // 노출시키고 싶은 폴더를 정의한다.
-App.use('/assets', express.static('assets'));
-App.use('/', rootRouter);
-App.use('/users', userRouter);
-App.use('/videos', videoRouter);
-App.use('/api', apiRouter);
+app.use('/uploads', express.static('uploads')); // 노출시키고 싶은 폴더를 정의한다.
+app.use('/assets', express.static('assets'));
+app.use('/', rootRouter);
+app.use('/users', userRouter);
+app.use('/videos', videoRouter);
+app.use('/api', apiRouter);
 
-export default App;
+export default app;
