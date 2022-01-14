@@ -12,6 +12,7 @@ const s3 = new aws.S3({
 const multerUploader = multerS3({
   s3,
   bucket: 'mahns-youtube',
+  acl: 'public-read',
 });
 
 const localMiddleware = (req, res, next) => {

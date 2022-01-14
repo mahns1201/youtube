@@ -41,13 +41,8 @@ app.use(
 
 app.use(localMiddleware);
 app.use((req, res, next) => {
-  res.header('Cross-Origin-Embedder-Policy', 'credentialless');
+  res.header('Cross-Origin-Embedder-Policy', 'require-corp');
   res.header('Cross-Origin-Opener-Policy', 'same-origin');
-  res.header(
-    'Access-Control-Allow-Origin',
-    'https://mahns-youtube.herokuapp.com',
-  );
-  res.header('Access-Control-Allow-Credentials', true);
   next();
 });
 app.use('/uploads', express.static('uploads')); // 노출시키고 싶은 폴더를 정의한다.
