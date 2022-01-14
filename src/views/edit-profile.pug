@@ -4,7 +4,7 @@ block content
     if errorMessage
         span=errorMessage
 
-    img(src=`/${loggedInUser.avatarUrl}`, width="100px", height="100px")
+    img(src=`${loggedInUser.avatarUrl}`, width="100px", height="100px" crossorigin)
 
     form(method="POST", enctype="multipart/form-data")
         label(for="avatar") Avatar
