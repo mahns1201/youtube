@@ -1,7 +1,7 @@
 mixin video(video)
     div
         h1=video.title
-        img(src=`${video.thumbUrl}`, alt="thumbnail")
+        img(src=`${video.thumbUrl}`, alt="thumbnail" crossorigin)
         ul
             li description: #{video.description}
             each hashtag in video.hashtags
