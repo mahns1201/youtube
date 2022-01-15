@@ -178,8 +178,6 @@ const postEdit = async (req, res) => {
     file,
   } = req;
 
-  console.log(file);
-
   // https://github.com/kmnkit/wetube/blob/main/src/controllers/userController.js
 
   // let searchParam = [];
@@ -215,10 +213,12 @@ const postEdit = async (req, res) => {
   // 3. 만약 둘 중 하나라도 다르다. -> 변경사항 있음 => 중복검사 실시! => 통과시 업데이트!
   // 2. 만약 같다. -> 변경사항 없음. => 중복검사 하지 않고 바로 업데이트
 
+  const isHeroku = process.env.NODE_ENV === 'production';
+
   const updatedUser = await User.findByIdAndUpdate(
     _id,
     {
-      avatarUrl: file ? file.location : avatarUrl,
+      avatarUrl: file ? (isHeroku ? file.location : file.path) : avatarUrl,
       name,
       email,
       username,
