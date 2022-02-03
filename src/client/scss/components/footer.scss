@@ -1,0 +1,13 @@
+footer {
+  height: 16vh;
+  padding: $padding__main;
+  background-color: $bg__black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.4rem;
+  div {
+    font-style: italic;
+  }
+}

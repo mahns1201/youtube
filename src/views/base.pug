@@ -12,24 +12,10 @@ html(lang="en")
         if messages.success
             +message("success", messages.success)
 
-
-
         include partials/header.pug
 
-        //- a(href="/") Home /
-        //- a(href="/search") Search /
-
-        //- if loggedIn
-        //-     a(href="/videos/upload") Upload /
-        //-     a(href=`/users/${loggedInUser._id}`) See Profile /
-        //-     a(href="/users/edit") Edit Profile /
-        //-     a(href="/profile") #{loggedInUser.name}'s Profile /
-        //-     a(href="/users/logout") Log Out
-        //- else
-        //-     a(href="/join") Join /
-        //-     a(href="/login") Login
-
-        block content
+        div#content
+            block content
 
     include partials/footer.pug
 

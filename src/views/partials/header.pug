@@ -1,4 +1,4 @@
-header
+header.shadow
   div
     a(href="/") Home
     a(href="/search") Search
@@ -8,8 +8,7 @@ header
       a(href="/videos/upload") Upload
       a(href=`/users/${loggedInUser._id}`) See Profile
       a(href="/users/edit") Edit Profile
-      a(href="/profile") #{loggedInUser.name}'s Profile
-      a(href="/users/logout") Log Out
+      a(href="/users/logout") Log out
     else
       a(href="/join") Join
-      a(href="/login") Login
+      a(href="/login") Log in
