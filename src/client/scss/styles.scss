@@ -19,6 +19,19 @@ body {
   }
 }
 
+::-webkit-scrollbar {
+  // display: none; /* Chrome, Safari, Opera*/
+  background-color: $bg__black_soft;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: $bg__black_soft;
+  border-radius: 0.5rem;
+}
+::-webkit-scrollbar-track {
+  background-color: $bg__black;
+}
+
 a {
   color: $text__white;
   text-decoration: none;
