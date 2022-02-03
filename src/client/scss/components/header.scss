@@ -1,0 +1,15 @@
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 8vh;
+  background-color: $bg__color;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  a:not(:last-child) {
+    margin-right: 1.5rem;
+  }
+}

@@ -1,0 +1,15 @@
+header
+  div
+    a(href="/") Home
+    a(href="/search") Search
+
+  div
+    if loggedIn
+      a(href="/videos/upload") Upload
+      a(href=`/users/${loggedInUser._id}`) See Profile
+      a(href="/users/edit") Edit Profile
+      a(href="/profile") #{loggedInUser.name}'s Profile
+      a(href="/users/logout") Log Out
+    else
+      a(href="/join") Join
+      a(href="/login") Login

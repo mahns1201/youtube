@@ -1,6 +1,20 @@
-@import "./variables";
+@import './reset.scss';
+@import './_variables.scss';
+@import './components/header.scss';
+
+* {
+  box-sizing: border-box;
+}
 
 body {
-  background-color: $red;
-  color: white;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background-color: $bg__color;
+  color: $text__color;
+  margin-top: 8vh;
+}
+
+a {
+  color: $text__color;
+  text-decoration: none;
 }
