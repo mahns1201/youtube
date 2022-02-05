@@ -1,0 +1,33 @@
+section {
+  height: 92vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  form {
+    display: flex;
+    flex-direction: column;
+    input {
+      @extend %button;
+      margin-bottom: 0.2rem;
+      &::placeholder {
+        color: $text__gray;
+      }
+    }
+    .button {
+      cursor: pointer;
+    }
+    a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      @extend %button;
+    }
+  }
+  div > a {
+    color: $text__gray;
+    &:hover {
+      color: $text__white;
+    }
+  }
+}

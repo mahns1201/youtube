@@ -2,6 +2,10 @@
 @import './_variables.scss';
 @import './components/header.scss';
 @import './components/footer.scss';
+@import './components/login.scss';
+
+//
+@import './components/button';
 
 * {
   box-sizing: border-box;
