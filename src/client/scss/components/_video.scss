@@ -1,0 +1,25 @@
+%video {
+  img {
+    max-width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0.5rem;
+    gap: 0.3rem;
+    li {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: $text__white;
+
+      &:not(:first-child) {
+        font-size: 1rem;
+        font-weight: normal;
+        color: $text__gray;
+      }
+    }
+  }
+}

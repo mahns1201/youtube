@@ -2,14 +2,16 @@ extends base.pug
 include mixins/video
 
 block content
-    h1 Welcome here you will see the trending videos!
+    section.home
+        each video in videos
+            +video(video)
+            //- div
+            //-     a(href=`/videos/${video.id}`) Watch
 
-    each video in videos
-        +video(video)
-        div
-            a(href=`/videos/${video.id}`) Watch
-
-        hr
-
-    else
-        h1 Sorry noting found
+        else
+            h1 Sorry noting found
+            div a
+            div a
+            div a
+            div a
+            div a

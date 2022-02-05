@@ -1,11 +1,11 @@
 mixin video(video)
-    div
-        h1=video.title
-        img(src=`${video.thumbUrl}`, alt="thumbnail" crossorigin)
-        ul
-            li description: #{video.description}
-            each hashtag in video.hashtags
-                li #{hashtag}
-            li rating: #{video.meta.rating}/5
-            li views: #{video.meta.views}
-            li createdAt: #{video.createdAt}
+  article.video
+    img(src=`${video.thumbUrl}`, alt="thumbnail" crossorigin)
+    ul
+      li #{video.title}
+      li Views: #{video.meta.views}
+      //- li #{video.createdAt}
+      //- li description: #{video.description}
+      //- each hashtag in video.hashtags
+      //-     li #{hashtag}
+      //- li rating: #{video.meta.rating}/5

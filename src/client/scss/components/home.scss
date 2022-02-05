@@ -1,0 +1,13 @@
+.home {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 35vh;
+  grid-auto-rows: 35vh;
+  gap: 1rem;
+  article {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 3fr 1fr;
+    @extend %video;
+  }
+}
