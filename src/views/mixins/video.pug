@@ -1,5 +1,5 @@
 mixin video(video)
-  article.video
+  article.video(data-id=video._id)
     img(src=`${video.thumbUrl}`, alt="thumbnail" crossorigin)
     ul
       li #{video.title}
@@ -9,3 +9,5 @@ mixin video(video)
       //- each hashtag in video.hashtags
       //-     li #{hashtag}
       //- li rating: #{video.meta.rating}/5
+
+  //- script(src="../../../assets/js/home.js")

@@ -5,6 +5,8 @@ block content
     section.home
         each video in videos
             +video(video)
+
+
             //- div
             //-     a(href=`/videos/${video.id}`) Watch
 
@@ -15,3 +17,6 @@ block content
             div a
             div a
             div a
+
+    script(src="/assets/js/home.js")
+
