@@ -2,19 +2,13 @@ extends base
 include mixins/video
 
 block content
-    form(method="GET")
+    form.search__form(method="GET")
         input(name="keyword", type="text", placeholder="Search by title", required)
         input(type="submit", value="Search")
 
-    div
+    section.home
         each video in videos
             +video(video)
-            div
-                a(href=`/videos/${video.id}`) Watch
-            div
-                a(href=`/videos/${video.id}/edit`) Edit
-
-            hr
 
         else
-            h1 Sorry noting found
+            h1 Noting found.

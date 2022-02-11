@@ -1,0 +1,18 @@
+.search__form {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-left: 1rem;
+  input:first-child {
+    @extend %button;
+    margin-right: 0.3rem;
+  }
+  input:last-child {
+    width: 4rem;
+    height: 3rem;
+    padding: 0.5rem;
+    background-color: $bg__black;
+    color: $text__white;
+    border: none;
+  }
+}
