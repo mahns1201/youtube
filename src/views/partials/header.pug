@@ -7,8 +7,10 @@ header.shadow
     if loggedIn
       a(href="/videos/upload") Upload
       a(href=`/users/${loggedInUser._id}`) See Profile
-      a(href="/users/edit") Edit Profile
+      //- a(href="/users/edit") Edit Profile
       a(href="/users/logout") Log out
+
+      img.avatar(src=`/${loggedInUser.avatarUrl}`, alt="avatar")
     else
       a(href="/join") Join
       a(href="/login") Log in
