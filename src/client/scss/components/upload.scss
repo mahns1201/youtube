@@ -1,0 +1,51 @@
+.upload__form {
+  height: 92vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    #preview {
+      width: 30vw;
+      height: 30vh;
+    }
+    #actionBtn {
+      margin: 0.5rem 0px 1.5rem 0px;
+      @extend %button;
+    }
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    label {
+      margin: 0.5rem 0px;
+    }
+    input {
+      @extend %button;
+      margin-bottom: 0.2rem;
+      &::placeholder {
+        color: $text__gray;
+      }
+    }
+
+    a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      @extend %button;
+    }
+  }
+  div > a {
+    color: $text__gray;
+    &:hover {
+      color: $text__white;
+    }
+  }
+}
+
+.button {
+  cursor: pointer;
+}
