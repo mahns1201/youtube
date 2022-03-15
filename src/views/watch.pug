@@ -1,8 +1,8 @@
 extends base.pug
 
 block content
-    div#videoContainer(data-id=video._id)
-        video#video(src=`${video.fileUrl}` crossorigin)
+    div#videoContainer.video__container(data-id=video._id)
+        video#video(src=`/${video.fileUrl}` crossorigin)
         div#videoControls
             button#playBtn Play
             button#muteBtn Mute
